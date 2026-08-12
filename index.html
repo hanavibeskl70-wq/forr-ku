@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forr - Anasta</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            overflow: hidden;
+
+            font-family: Arial, sans-serif;
+            color: white;
+
+            /* BACKGROUND MERAH HITAM */
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(150, 0, 0, 0.45) 0%,
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(100, 0, 0, 0.35) 0%,
+                    transparent 35%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #050000,
+                    #160000,
+                    #020202
+                );
+        }
+
+
+        /* =========================
+           BINTANG
+        ========================= */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+
+            background-image:
+                radial-gradient(
+                    circle,
+                    rgba(255,255,255,0.8) 1px,
+                    transparent 1px
+                ),
+
+                radial-gradient(
+                    circle,
+                    rgba(255,50,50,0.8) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                120px 120px,
+                180px 180px;
+
+            background-position:
+                20px 30px,
+                70px 90px;
+
+            opacity: 0.45;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            width: 90%;
+            max-width: 430px;
+
+            text-align: center;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* =========================
+           HALAMAN AWAL
+        ========================= */
+
+        #halamanAwal {
+            animation: muncul 1s ease;
+        }
+
+
+        .special {
+
+            color: #ff4d4d;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 20px;
+
+            text-shadow:
+                0 0 8px #ff0000,
+                0 0 20px rgba(255,0,0,0.6);
+        }
+
+
+        .name {
+
+            font-size: 64px;
+
+            font-weight: 800;
+
+            margin-bottom: 10px;
+
+            color: #ff3b3b;
+
+            text-shadow:
+                0 0 10px #ff0000,
+                0 0 25px #ff0000,
+                0 0 45px rgba(255,0,0,0.7);
+        }
+
+
+        .subtitle {
+
+            color: #d8d8d8;
+
+            font-size: 15px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           TOMBOL MERAH
+        ========================= */
+
+        .button {
+
+            display: inline-flex;
+
+            justify-content: center;
+            align-items: center;
+
+            min-width: 290px;
+
+            height: 60px;
+
+            border-radius: 40px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7a0000,
+                    #ff1a1a
+                );
+
+            border:
+                2px solid rgba(255,100,100,0.6);
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            cursor: pointer;
+
+            box-shadow:
+
+                0 0 8px #ff0000,
+
+                0 0 20px rgba(255,0,0,0.6),
+
+                0 0 40px rgba(255,0,0,0.25),
+
+                inset 0 0 10px rgba(255,255,255,0.15);
+
+            transition: 0.3s;
+        }
+
+
+        .button:hover {
+
+            transform: scale(1.05);
+
+            box-shadow:
+
+                0 0 12px #ff0000,
+
+                0 0 35px rgba(255,0,0,0.9),
+
+                0 0 60px rgba(255,0,0,0.5);
+        }
+
+
+        .button:active {
+
+            transform: scale(0.97);
+        }
+
+
+        /* =========================
+           HALAMAN PESAN
+        ========================= */
+
+        #halamanPesan {
+
+            display: none;
+
+            animation:
+                masukPesan 1s ease;
+        }
+
+
+        /* =========================
+           CARD MERAH HITAM
+        ========================= */
+
+        .card {
+
+            padding:
+                18px
+                20px
+                22px;
+
+            margin-bottom: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(80,0,0,0.55),
+                    rgba(10,10,10,0.75)
+                );
+
+            border:
+                1px solid rgba(255,40,40,0.45);
+
+            border-radius: 15px;
+
+            backdrop-filter: blur(10px);
+
+            -webkit-backdrop-filter: blur(10px);
+
+            box-shadow:
+
+                0 10px 30px rgba(0,0,0,0.6),
+
+                0 0 20px rgba(255,0,0,0.15),
+
+                inset 0 1px 1px
+                rgba(255,255,255,0.08);
+        }
+
+
+        .card h1 {
+
+            margin-bottom: 12px;
+
+            font-size: 18px;
+
+            color: #ff5555;
+
+            text-shadow:
+                0 0 10px rgba(255,0,0,0.7);
+        }
+
+
+        .card p {
+
+            margin-bottom: 18px;
+
+            font-size: 9px;
+
+            color: #eeeeee;
+        }
+
+
+        .message {
+
+            font-size: 9px;
+
+            font-weight: bold;
+
+            line-height: 1.8;
+        }
+
+
+        .message div {
+
+            margin: 13px 0;
+
+            color: #ffffff;
+        }
+
+
+        /* =========================
+           FOTO
+        ========================= */
+
+        .photo-frame {
+
+            padding: 3px;
+
+            border-radius: 13px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #ff0000,
+                    #500000,
+                    #ff3030
+                );
+
+            box-shadow:
+
+                0 0 10px rgba(255,0,0,0.7),
+
+                0 0 25px rgba(255,0,0,0.35);
+        }
+
+
+        .photo-frame img {
+
+            display: block;
+
+            width: 100%;
+
+            height: 180px;
+
+            object-fit: cover;
+
+            border-radius: 10px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+
+            margin-top: 8px;
+
+            font-size: 7px;
+
+            color:
+                rgba(255,120,120,0.65);
+        }
+
+
+        /* =========================
+           TOMBOL KEMBALI
+        ========================= */
+
+        .back-button {
+
+            margin-top: 15px;
+
+            padding:
+                8px
+                20px;
+
+            border-radius: 20px;
+
+            border:
+                1px solid
+                rgba(255,50,50,0.4);
+
+            background:
+                rgba(255,0,0,0.08);
+
+            color: #aaa;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .back-button:hover {
+
+            color: white;
+
+            border-color: #ff0000;
+
+            box-shadow:
+                0 0 15px
+                rgba(255,0,0,0.6);
+        }
+
+
+        /* =========================
+           ANIMASI
+        ========================= */
+
+        @keyframes muncul {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(20px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        @keyframes masukPesan {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    scale(0.9)
+                    translateY(20px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    translateY(0);
+            }
+        }
+
+
+        /* =========================
+           HP
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .name {
+
+                font-size: 48px;
+            }
+
+            .button {
+
+                min-width: 260px;
+            }
+
+            .special {
+
+                font-size: 12px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+
+        <!-- =========================
+             HALAMAN PERTAMA
+        ========================== -->
+
+        <div id="halamanAwal">
+
+
+            <div class="special">
+
+                ✦ Untuk Sodara ✦
+
+            </div>
+
+
+            <div class="name">
+
+                Anasta
+
+            </div>
+
+
+            <div class="subtitle">
+
+                Ada sesuatu yang ingin disampaikan kepadamu...
+
+            </div>
+
+
+            <button
+                class="button"
+                onclick="bukaPesan()"
+            >
+
+                ❤️ COBA KLIK NAS ❤️
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             HALAMAN KEDUA
+        ========================== -->
+
+        <div id="halamanPesan">
+
+
+            <div class="card">
+
+
+                <h1>
+
+                    Sodara Kuuu
+
+                </h1>
+
+
+                <p>
+
+                    Inti nya ada sodara.
+
+                </p>
+
+
+                <div class="message">
+
+
+                    <div>
+
+                        MARIHLAH KITA MEROKOK
+
+                    </div>
+
+
+                    <div>
+
+                        AGAR TIDAK STRES KALI
+
+                    </div>
+
+
+                    <div>
+
+                        CUMAN DUNIA INI SODARA
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- FOTO -->
+
+            <div class="photo-frame">
+
+
+                <img
+                    src="merokok.jpg"
+                    alt="Foto untuk Sodara"
+                >
+
+
+            </div>
+
+
+
+            <!-- FOOTER -->
+
+            <div class="footer">
+
+                Dari ku untuk mu sodara ku anasta ♥
+
+            </div>
+
+
+
+            <!-- KEMBALI -->
+
+            <button
+                class="back-button"
+                onclick="kembaliKeAwal()"
+            >
+
+                ← Kembali
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <script>
+
+
+        function bukaPesan() {
+
+            document.getElementById(
+                "halamanAwal"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "halamanPesan"
+            ).style.display = "block";
+
+        }
+
+
+
+        function kembaliKeAwal() {
+
+            document.getElementById(
+                "halamanPesan"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "halamanAwal"
+            ).style.display = "block";
+
+        }
+
+
+    </script>
+
+
+</body>
+</html>
+```
