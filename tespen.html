@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DAGELAN4D</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    color:#fff;
+    background:#220000;
+}
+
+.page{
+    min-height:100vh;
+    width:100%;
+    position:relative;
+
+    background-image:url("oprti.png");
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    overflow:hidden;
+}
+
+.page::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:radial-gradient(
+        circle at center,
+        transparent 25%,
+        rgba(0,0,0,.18) 100%
+    );
+
+    pointer-events:none;
+    z-index:0;
+}
+
+
+/* ================================= */
+/* PHONE */
+/* ================================= */
+
+.phone{
+    position:relative;
+    z-index:5;
+
+    width:520px;
+    min-height:100vh;
+
+    margin:0 auto;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15,0,0,.78),
+            rgba(10,0,0,.84)
+        );
+
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(4px);
+
+    border-left:2px solid rgba(255,0,0,.65);
+    border-right:2px solid rgba(255,0,0,.65);
+
+    box-shadow:
+        0 0 30px rgba(0,0,0,.85),
+        0 0 60px rgba(255,0,0,.25);
+}
+
+
+/* ================================= */
+/* BANNER */
+/* ================================= */
+
+.banner{
+    width:calc(100% - 16px);
+
+    margin:8px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:7px;
+
+    border:1px solid rgba(255,33,18,.85);
+
+    background:rgba(24,0,0,.35);
+
+    backdrop-filter:blur(2px);
+    -webkit-backdrop-filter:blur(2px);
+
+    box-shadow:
+        inset 0 0 30px rgba(0,0,0,.45),
+        0 0 15px rgba(255,0,0,.35);
+}
+
+.banner-image{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+
+/* ================================= */
+/* LOGIN AREA */
+/* ================================= */
+
+.login-area{
+    padding:4px 15px 10px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(80,0,0,.12),
+            rgba(0,0,0,.08)
+        );
+
+    backdrop-filter:blur(3px);
+    -webkit-backdrop-filter:blur(3px);
+
+    border-top:1px solid rgba(255,0,0,.12);
+    border-bottom:1px solid rgba(255,0,0,.12);
+}
+
+.welcome{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.crown{
+    width:45px;
+    height:45px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid #ffd000;
+    border-radius:50%;
+
+    background:rgba(80,0,0,.65);
+
+    overflow:hidden;
+
+    box-shadow:
+        0 0 10px rgba(255,180,0,.4);
+}
+
+.crown img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.welcome strong{
+    font-size:15px;
+}
+
+.welcome small{
+    display:block;
+    color:#aaa;
+    margin-top:3px;
+    font-size:10px;
+}
+
+
+/* ================================= */
+/* BUTTON */
+/* ================================= */
+
+.buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:9px;
+}
+
+.btn{
+    height:43px;
+    border-radius:5px;
+    border:1px solid #ff2112;
+
+    font-weight:bold;
+    color:#fff;
+    cursor:pointer;
+
+    transition:.25s;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.login{
+    background:
+        linear-gradient(
+            110deg,
+            rgba(118,0,0,.78),
+            rgba(224,0,0,.82),
+            rgba(255,40,24,.78),
+            rgba(165,0,0,.82),
+            rgba(101,0,0,.78)
+        );
+
+    background-size:250% 100%;
+    animation:buttonLight 3s ease infinite;
+
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+
+    box-shadow:
+        0 0 8px rgba(255,0,0,.5),
+        inset 0 1px rgba(255,255,255,.22);
+}
+
+.list{
+    background:
+        linear-gradient(
+            110deg,
+            rgba(39,0,0,.72),
+            rgba(101,0,0,.70),
+            rgba(157,0,0,.68),
+            rgba(69,0,0,.72),
+            rgba(23,0,0,.70)
+        );
+
+    background-size:250% 100%;
+    animation:buttonLight 3.5s ease infinite;
+
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+
+    box-shadow:
+        0 0 8px rgba(255,0,0,.35),
+        inset 0 1px rgba(255,255,255,.18);
+}
+
+.btn::after{
+    content:"";
+
+    position:absolute;
+    top:-80%;
+    left:-100%;
+
+    width:35%;
+    height:260%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.12),
+            rgba(255,255,255,.7),
+            rgba(255,255,255,.12),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:buttonShine 3s ease-in-out infinite;
+
+    pointer-events:none;
+}
+
+@keyframes buttonShine{
+    0%{left:-100%;}
+    45%{left:150%;}
+    100%{left:150%;}
+}
+
+@keyframes buttonLight{
+    0%,100%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+
+    filter:brightness(1.2);
+
+    box-shadow:
+        0 0 10px rgba(255,0,0,.9),
+        0 0 20px rgba(255,0,0,.4);
+}
+
+
+/* ================================= */
+/* GAME */
+/* ================================= */
+
+.games{
+    padding:0 15px 90px;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+
+    margin-bottom:9px;
+}
+
+.section-title h2{
+    font-size:15px;
+}
+
+.game-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+}
+
+
+/* ================================= */
+/* GAME CARD */
+/* ================================= */
+
+.game-card{
+    position:relative;
+    overflow:hidden;
+
+    border:2px solid rgba(212,0,0,.85);
+    border-radius:8px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,0,0,.14),
+            rgba(0,0,0,.58)
+        );
+
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+
+    box-shadow:
+        0 0 0 1px rgba(255,0,0,.20),
+        0 4px 14px rgba(0,0,0,.65),
+        0 0 12px rgba(255,0,0,.20),
+        inset 0 0 20px rgba(255,0,0,.06);
+
+    transition:.3s;
+}
+
+.game-card::before{
+    content:"";
+
+    position:absolute;
+    z-index:20;
+
+    top:-40%;
+    left:-80%;
+
+    width:45%;
+    height:180%;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255,255,255,.04) 25%,
+            rgba(255,255,255,.55) 50%,
+            rgba(255,255,255,.08) 70%,
+            transparent 100%
+        );
+
+    transform:skewX(-20deg);
+
+    filter:blur(.5px);
+
+    animation:cardGlass 4s ease-in-out infinite;
+}
+
+@keyframes cardGlass{
+    0%{left:-80%;}
+    45%{left:150%;}
+    100%{left:150%;}
+}
+
+.game-card::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    z-index:18;
+
+    border-radius:6px;
+
+    pointer-events:none;
+
+    box-shadow:
+        inset 0 0 8px rgba(255,0,0,.35);
+
+    animation:borderPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes borderPulse{
+    0%,100%{
+        box-shadow:
+            inset 0 0 6px rgba(255,0,0,.25);
+    }
+
+    50%{
+        box-shadow:
+            inset 0 0 15px rgba(255,0,0,.7);
+    }
+}
+
+.game-card:hover{
+    transform:translateY(-3px);
+
+    border-color:#ff3b2f;
+
+    box-shadow:
+        0 0 0 1px rgba(255,40,20,.4),
+        0 7px 20px rgba(255,0,0,.45),
+        0 0 25px rgba(255,0,0,.25);
+}
+
+
+/* ================================= */
+/* GAME TITLE */
+/* ================================= */
+
+.game-top{
+    position:relative;
+
+    height:24px;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 7px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(192,0,0,.72),
+            rgba(101,0,0,.62)
+        );
+
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(4px);
+
+    border-bottom:1px solid rgba(255,74,61,.75);
+
+    overflow:hidden;
+}
+
+.game-top::after{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-80%;
+
+    width:40%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.15),
+            rgba(255,255,255,.7),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:titleShine 3s ease-in-out infinite;
+}
+
+@keyframes titleShine{
+    0%{left:-80%;}
+    45%{left:140%;}
+    100%{left:140%;}
+}
+
+.game-title{
+    position:relative;
+    z-index:2;
+
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:.2px;
+
+    text-transform:uppercase;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+
+    text-shadow:
+        0 1px 2px #000,
+        0 0 5px rgba(255,255,255,.25);
+}
+
+
+/* ================================= */
+/* VIDEO */
+/* ================================= */
+
+.game-image{
+    height:150px;
+
+    position:relative;
+    overflow:hidden;
+
+    background:rgba(0,0,0,.45);
+}
+
+.game-thumb{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:
+        transform .4s,
+        filter .4s;
+}
+
+.game-card:hover .game-thumb{
+    transform:scale(1.04);
+
+    filter:
+        brightness(1.08)
+        saturate(1.1);
+}
+
+.game-image::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    z-index:2;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255,0,0,.035),
+            rgba(0,0,0,.03) 35%,
+            rgba(0,0,0,.30)
+        );
+
+    pointer-events:none;
+}
+
+
+/* ================================= */
+/* HOT */
+/* ================================= */
+
+.hot{
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    z-index:8;
+
+    padding:4px 10px 4px 6px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff301c,
+            #b00000
+        );
+
+    font-size:8px;
+    font-weight:bold;
+
+    text-shadow:0 1px 2px #000;
+
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        75% 100%,
+        0 100%
+    );
+
+    box-shadow:
+        0 0 10px rgba(255,0,0,.7);
+}
+
+
+/* ================================= */
+/* PLAY TENGAH */
+/* ================================= */
+
+.video-play{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    z-index:10;
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    border:
+        2px solid
+        rgba(255,255,255,.90);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(0,0,0,.38);
+
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+
+    color:#fff;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,.28),
+        0 0 18px rgba(255,0,0,.35),
+        inset 0 0 10px rgba(255,255,255,.12);
+
+    transition:.25s;
+}
+
+.video-play::before{
+    content:"";
+
+    position:absolute;
+    inset:-5px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,50,30,.65);
+
+    animation:playRing 2s ease-in-out infinite;
+}
+
+@keyframes playRing{
+    0%,100%{
+        transform:scale(.95);
+        opacity:.5;
+    }
+
+    50%{
+        transform:scale(1.12);
+        opacity:1;
+    }
+}
+
+.video-play:hover{
+    transform:
+        translate(-50%,-50%)
+        scale(1.1);
+
+    background:
+        rgba(210,0,0,.75);
+
+    box-shadow:
+        0 0 12px #fff,
+        0 0 25px rgba(255,0,0,.9),
+        inset 0 0 12px rgba(255,255,255,.25);
+}
+
+
+/* ================================= */
+/* PLAY BAWAH */
+/* ================================= */
+
+.game-bottom{
+    padding:5px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(66,0,0,.65),
+            rgba(21,0,0,.55)
+        );
+
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+
+    border-top:1px solid rgba(255,0,0,.18);
+}
+
+.play-bar{
+    position:relative;
+    overflow:hidden;
+
+    width:100%;
+    height:28px;
+
+    border:1px solid rgba(255,69,69,.85);
+    border-radius:6px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:5px;
+
+    color:#fff;
+
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:.3px;
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(157,0,0,.72),
+            rgba(255,32,21,.78),
+            rgba(208,0,0,.72),
+            rgba(124,0,0,.72)
+        );
+
+    background-size:250% 100%;
+
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+
+    cursor:pointer;
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.28),
+        inset 0 -4px 8px rgba(0,0,0,.22),
+        0 2px 6px rgba(0,0,0,.45),
+        0 0 8px rgba(255,0,0,.3);
+
+    animation:
+        playGradient 3s ease-in-out infinite;
+
+    transition:.2s;
+}
+
+.play-bar::after{
+    content:"";
+
+    position:absolute;
+
+    top:-60%;
+    left:-80%;
+
+    width:30%;
+    height:220%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.1),
+            rgba(255,255,255,.75),
+            rgba(255,255,255,.1),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:
+        playShine 3s ease-in-out infinite;
+
+    pointer-events:none;
+}
+
+@keyframes playShine{
+    0%{left:-80%;}
+    45%{left:150%;}
+    100%{left:150%;}
+}
+
+@keyframes playGradient{
+    0%,100%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+}
+
+.play-bar:hover{
+    filter:brightness(1.2);
+
+    transform:translateY(-1px);
+
+    box-shadow:
+        0 0 10px rgba(255,0,0,.8),
+        0 0 20px rgba(255,0,0,.35),
+        inset 0 1px rgba(255,255,255,.4);
+}
+
+.play-icon{
+    font-size:9px;
+}
+
+
+/* ================================= */
+/* VIDEO POPUP */
+/* ================================= */
+
+.video-modal{
+    display:none;
+
+    position:fixed;
+    inset:0;
+
+    z-index:9999;
+
+    background:
+        rgba(0,0,0,.9);
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+}
+
+.video-modal.show{
+    display:flex;
+}
+
+.video-box{
+    position:relative;
+
+    width:100%;
+    max-width:800px;
+
+    background:#080000;
+
+    border:2px solid #ff2112;
+
+    border-radius:10px;
+
+    padding:10px;
+
+    box-shadow:
+        0 0 30px rgba(255,0,0,.6);
+}
+
+.video-box video{
+    width:100%;
+    display:block;
+
+    border-radius:6px;
+
+    background:#000;
+}
+
+.close-video{
+    position:absolute;
+
+    top:-15px;
+    right:-15px;
+
+    width:35px;
+    height:35px;
+
+    border-radius:50%;
+
+    border:1px solid #ff2112;
+
+    background:#a00000;
+
+    color:#fff;
+
+    font-size:22px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    z-index:10;
+}
+
+.close-video:hover{
+    background:#ff2112;
+}
+
+
+/* ================================= */
+/* BOTTOM NAV */
+/* ================================= */
+
+.bottom{
+    position:fixed;
+
+    z-index:30;
+
+    bottom:0;
+
+    width:520px;
+    height:68px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(22,0,0,.78),
+            rgba(5,0,0,.72)
+        );
+
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+
+    border-top:
+        1px solid
+        rgba(255,0,0,.45);
+
+    box-shadow:
+        0 -5px 20px rgba(0,0,0,.55),
+        inset 0 1px rgba(255,255,255,.04);
+}
+
+.nav{
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    color:#977f7f;
+
+    font-size:9px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.nav-icon{
+    font-size:21px;
+    margin-bottom:3px;
+}
+
+.nav:hover{
+    color:#ff351e;
+}
+
+.nav.active{
+    color:#ff2414;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,0,0,.12),
+            transparent
+        );
+}
+
+.nav.active .nav-icon{
+    text-shadow:
+        0 0 10px rgba(255,0,0,.8);
+}
+
+
+/* ================================= */
+/* RESPONSIVE */
+/* ================================= */
+
+@media(max-width:700px){
+
+    .page{
+        background-attachment:scroll;
+    }
+
+    .phone{
+        width:100%;
+
+        border-left:0;
+        border-right:0;
+    }
+
+    .bottom{
+        width:100%;
+    }
+}
+
+@media(max-width:400px){
+
+    .game-image{
+        height:120px;
+    }
+
+    .video-play{
+        width:38px;
+        height:38px;
+        font-size:15px;
+    }
+
+    .game-title{
+        font-size:8px;
+    }
+
+    .play-bar{
+        height:25px;
+        font-size:9px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="page">
+
+<main class="phone">
+
+
+<!-- ================================= -->
+<!-- BANNER -->
+<!-- ================================= -->
+
+<section class="banner">
+
+    <img
+        class="banner-image"
+        src="simula.jpg"
+        alt="Promo DAGELAN4D"
+    >
+
+</section>
+
+
+<!-- ================================= -->
+<!-- LOGIN AREA -->
+<!-- ================================= -->
+
+<section class="login-area">
+
+    <div class="welcome">
+
+        <div class="crown">
+
+            <img
+                src="asaaaa.png"
+                alt="Logo"
+            >
+
+        </div>
+
+        <div>
+
+            <strong>DAGELAN4D</strong>
+
+            <small>
+                Deposit Merakyat Wede sultan
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="buttons">
+
+        <button
+            class="btn login"
+            onclick="window.location.href='https://dagelan4droyal.com/'"
+        >
+            🔒 LOGIN
+        </button>
+
+
+        <button
+            class="btn list"
+            onclick="scrollGames()"
+        >
+            📋 LIST GAME
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================================= -->
+<!-- GAMES -->
+<!-- ================================= -->
+
+<section
+    class="games"
+    id="games"
+>
+
+    <div class="section-title">
+
+        <h2>
+            🎮 GAME TERPOPULER
+        </h2>
+
+    </div>
+
+
+    <div class="game-grid">
+
+
+        <!-- GAME 1 -->
+
+        <div class="game-card">
+
+            <div class="game-top">
+
+                <div class="game-title">
+                    STARLIGHT PRINCESS
+                </div>
+
+            </div>
+
+
+            <div class="game-image">
+
+                <video
+                    class="game-thumb"
+                    muted
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="gcor.mp4"
+                        type="video/mp4"
+                    >
+
+                </video>
+
+
+                <div class="hot">
+                    HOT
+                </div>
+
+
+                <div
+                    class="video-play"
+                    onclick="playGame('gcor.mp4')"
+                >
+                    ▶
+                </div>
+
+            </div>
+
+
+            <div class="game-bottom">
+
+                <button
+                    class="play-bar"
+                    onclick="openGameLink('https://dagelan4droyal.com/')"
+                >
+
+                    <span class="play-icon">
+                        ▶
+                    </span>
+
+                    PLAY
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- GAME 2 -->
+
+        <div class="game-card">
+
+            <div class="game-top">
+
+                <div class="game-title">
+                    MAHJONG WINS 2
+                </div>
+
+            </div>
+
+
+            <div class="game-image">
+
+                <video
+                    class="game-thumb"
+                    muted
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="aaa.mp4"
+                        type="video/mp4"
+                    >
+
+                </video>
+
+
+                <div class="hot">
+                    HOT
+                </div>
+
+
+                <div
+                    class="video-play"
+                    onclick="playGame('aaa.mp4')"
+                >
+                    ▶
+                </div>
+
+            </div>
+
+
+            <div class="game-bottom">
+
+                <button
+                    class="play-bar"
+                    onclick="openGameLink('https://dagelan4droyal.com/')"
+                >
+
+                    <span class="play-icon">
+                        ▶
+                    </span>
+
+                    PLAY
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- GAME 3 -->
+
+        <div class="game-card">
+
+            <div class="game-top">
+
+                <div class="game-title">
+                    GATES OF OLYMPUS 1000
+                </div>
+
+            </div>
+
+
+            <div class="game-image">
+
+                <video
+                    class="game-thumb"
+                    muted
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="aaaa3.mp4"
+                        type="video/mp4"
+                    >
+
+                </video>
+
+
+                <div class="hot">
+                    HOT
+                </div>
+
+
+                <div
+                    class="video-play"
+                    onclick="playGame('aaaa3.mp4')"
+                >
+                    ▶
+                </div>
+
+            </div>
+
+
+            <div class="game-bottom">
+
+                <button
+                    class="play-bar"
+                    onclick="openGameLink('https://dagelan4droyal.com/')"
+                >
+
+                    <span class="play-icon">
+                        ▶
+                    </span>
+
+                    PLAY
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- GAME 4 -->
+
+        <div class="game-card">
+
+            <div class="game-top">
+
+                <div class="game-title">
+                    MAHJONG WAYS
+                </div>
+
+            </div>
+
+
+            <div class="game-image">
+
+                <video
+                    class="game-thumb"
+                    muted
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="aa36.mp4"
+                        type="video/mp4"
+                    >
+
+                </video>
+
+
+                <div class="hot">
+                    HOT
+                </div>
+
+
+                <div
+                    class="video-play"
+                    onclick="playGame('aa36.mp4')"
+                >
+                    ▶
+                </div>
+
+            </div>
+
+
+            <div class="game-bottom">
+
+                <button
+                    class="play-bar"
+                    onclick="openGameLink('https://dagelan4droyal.com/')"
+                >
+
+                    <span class="play-icon">
+                        ▶
+                    </span>
+
+                    PLAY
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- GAME 5 -->
+
+        <div class="game-card">
+
+            <div class="game-top">
+
+                <div class="game-title">
+                    SWEET BONANZA XMAS
+                </div>
+
+            </div>
+
+
+            <div class="game-image">
+
+                <video
+                    class="game-thumb"
+                    muted
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="ss63.mp4"
+                        type="video/mp4"
+                    >
+
+                </video>
+
+
+                <div class="hot">
+                    NEW
+                </div>
+
+
+                <div
+                    class="video-play"
+                    onclick="playGame('ss63.mp4')"
+                >
+                    ▶
+                </div>
+
+            </div>
+
+
+            <div class="game-bottom">
+
+                <button
+                    class="play-bar"
+                    onclick="openGameLink('https://dagelan4droyal.com/')"
+                >
+
+                    <span class="play-icon">
+                        ▶
+                    </span>
+
+                    PLAY
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- GAME 6 -->
+
+        <div class="game-card">
+
+            <div class="game-top">
+
+                <div class="game-title">
+                    HOT FIESTA
+                </div>
+
+            </div>
+
+
+            <div class="game-image">
+
+                <video
+                    class="game-thumb"
+                    muted
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="22aa.mp4"
+                        type="video/mp4"
+                    >
+
+                </video>
+
+
+                <div class="hot">
+                    HOT
+                </div>
+
+
+                <div
+                    class="video-play"
+                    onclick="playGame('22aa.mp4')"
+                >
+                    ▶
+                </div>#ada
+
+            </div>
+
+
+            <div class="game-bottom">
+
+                <button
+                    class="play-bar"
+                    onclick="openGameLink('https://dagelan4droyal.com/')"
+                >
+
+                    <span class="play-icon">
+                        ▶
+                    </span>
+
+                    PLAY
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ================================= -->
+<!-- VIDEO POPUP -->
+<!-- ================================= -->
+
+<div
+    class="video-modal"
+    id="videoModal"
+>
+
+    <div class="video-box">
+
+        <button
+            class="close-video"
+            onclick="closeVideo()"
+        >
+            ×
+        </button>
+
+
+        <video
+            id="gameVideo"
+            controls
+            playsinline
+        >
+
+            <source
+                id="videoSource"
+                src=""
+                type="video/mp4"
+            >
+
+        </video>
+
+    </div>
+
+</div>
+
+
+<!-- ================================= -->
+<!-- BOTTOM NAV -->
+<!-- ================================= -->
+
+<nav class="bottom">
+
+    <div
+        class="nav active"
+        onclick="goHome()"
+    >
+        <div class="nav-icon">🏠</div>
+        HOME
+    </div>
+
+
+    <div
+        class="nav"
+        onclick="openTelegram()"
+    >
+        <div class="nav-icon">✈️</div>
+        TELEGRAM
+    </div>
+</nav>
+
+</div>
+
+
+<script>
+
+/* ================================= */
+/* LOGIN */
+/* ================================= */
+
+function loginUser(){
+
+    window.location.href = "https://dagelan4droyal.com/";
+
+}
+
+
+/* ================================= */
+/* LINK GAME */
+/* ================================= */
+
+function openGameLink(url){
+
+    window.location.href = url;
+
+}
+
+
+/* ================================= */
+/* VIDEO */
+/* ================================= */
+
+function playGame(videoFile){
+
+    const modal =
+        document.getElementById(
+            "videoModal"
+        );
+
+    const video =
+        document.getElementById(
+            "gameVideo"
+        );
+
+    const source =
+        document.getElementById(
+            "videoSource"
+        );
+
+
+    source.src = videoFile;
+
+    video.load();
+
+    modal.classList.add("show");
+
+
+    video.play().catch(function(){
+
+        console.log(
+            "Video siap diputar."
+        );
+
+    });
+
+}
+
+
+/* ================================= */
+/* CLOSE VIDEO */
+/* ================================= */
+
+function closeVideo(){
+
+    const modal =
+        document.getElementById(
+            "videoModal"
+        );
+
+    const video =
+        document.getElementById(
+            "gameVideo"
+        );
+
+
+    video.pause();
+
+    video.currentTime = 0;
+
+    modal.classList.remove("show");
+
+    video.removeAttribute("src");
+
+    video.load();
+
+}
+
+
+/* ================================= */
+/* CLICK OUTSIDE VIDEO */
+/* ================================= */
+
+document
+    .getElementById("videoModal")
+    .addEventListener(
+        "click",
+        function(e){
+
+            if(e.target === this){
+
+                closeVideo();
+
+            }
+
+        }
+    );
+
+
+/* ================================= */
+/* ESC */
+/* ================================= */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "Escape"){
+
+            closeVideo();
+
+        }
+
+    }
+);
+
+
+/* ================================= */
+/* SCROLL GAME */
+/* ================================= */
+
+function scrollGames(){
+
+    document
+        .getElementById("games")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+
+/* ================================= */
+/* TELEGRAM */
+/* ================================= */
+
+function openTelegram(){
+
+    window.location.href = "https://t.me/+TpFN62ChVAw1YjNl";
+
+}
+
+/* ================================= */
+/* HOME */
+/* ================================= */
+
+function goHome(){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+</script>
+
+</body>
+</html>
